@@ -1,0 +1,16 @@
+
+<textarea id="textArea" (blur)="onKeyup($event)" [style.display]="textoArea ? 'block' : 'none'"  >{{texto.conteudo}}</textarea>
+<div id="texto" [style.display]="textoArea ? 'none' : ''">{{texto.conteudo}}</div>
+
+
+<hr />
+
+<div id="salvar" [style.text-aling]="right">
+        <button  class="btn btn-danger" (click)="cancelar()"[style.display]="textoArea ? '' : 'none'">Cancelar</button>
+        <button class="btn btn-success" (click)="salvar()" [style.display]="textoArea ? '' : 'none'">Salvar</button>
+        <button   class="btn btn-primary" (click)="editar()" [style.display]="textoArea ? 'none' : ''">Editar</button>
+</div>
+
+
+
+

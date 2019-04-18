@@ -1,0 +1,49 @@
+ #celula{
+   /* font-size: 8px !important;
+    font-family: Verdana, Tahoma, Arial;
+    padding:5px; 
+    width:50%; 
+    height:100%; 
+    overflow:auto; 
+    display: block;
+    text-align: center;*/
+    display:block;     
+    width:100%;        
+    margin:0;          
+    padding:0;         
+    border:0 none;    
+    line-height:20px; 
+    height:20px;       
+}
+
+#celula2{
+    text-align: left;
+    font-size: 12px !important;
+    font-family: Verdana, Tahoma, Arial;
+}
+
+#tabela{
+    overflow-x: scroll; 
+    overflow-y: hidden; 
+    white-space: nowrap;
+}
+
+
+table { 
+    text-align: center;
+    border-collapse:collapse; 
+    background-color:#FFFFFF;
+    }
+    td {border:1px solid #003366; 
+        width:10%;
+    }
+
+    td div {
+        
+      overflow:auto; 
+    }
+
+    .table-striped > thead > tr > th, .table-striped > tbody > tr > th, .table-striped > tfoot > tr > th, .table-striped > thead > tr > td, .table-striped > tbody > tr > td, .table-striped > tfoot > tr > td {
+        padding: 0px 0px;
+        white-space: nowrap;
+    }
