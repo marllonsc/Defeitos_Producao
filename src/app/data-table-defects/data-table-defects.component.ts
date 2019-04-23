@@ -56,6 +56,11 @@ export class DataTableDefectsComponent implements OnInit {
         });
   }
 
+
+  private getDefectsFiltroClickButon(equipe: String): void {
+      this.returnDefeitosFiltro(equipe);
+  }
+
   private getDefectsFiltro(equipe: String): void {
     this.defectsService.getDefeitos()
     .subscribe((data: Array<Defeito>) => {
@@ -134,15 +139,12 @@ export class DataTableDefectsComponent implements OnInit {
         }
       }
     }
-    console.log(equipe);
     }
     
   }
 
   private checkTS(entrada: String) : boolean{
     this.ts.forEach(element => {
-      console.log(element.tabs);
-      console.log(entrada);
       if(element.tabs == entrada){
         return true;
       }
@@ -160,7 +162,7 @@ export class DataTableDefectsComponent implements OnInit {
   }
 
   public changeTable(entrada: String){
-     this.getDefectsFiltro(entrada);
+     this.getDefectsFiltroClickButon(entrada);
   }
 
   public returnCor(cell:String): String{
