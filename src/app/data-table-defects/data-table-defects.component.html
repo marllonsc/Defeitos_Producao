@@ -20,6 +20,9 @@
                                 <div class="tab-pane active" id="home">
                         <div class="content table-responsive table-full-width">
                                 <app-text-area-table></app-text-area-table> 
+                                <div id="divFiltro">
+                                Filtro: <input id="filtro"  (keyup)="filtroKeyUp($event)"size="40" value="{{filtro}}">
+                            </div>
                                 <div id="tabela">
                             <table id="tabela" class="table table-striped table-border table-hover">
                                 <thead>

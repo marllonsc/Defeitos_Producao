@@ -26,11 +26,15 @@ export class DataTableDefectsComponent implements OnInit {
 
   public total: number;
 
+  public filtro: string;
+  public equipeFiltro: String;
 
   public tableData1: TableData;
 
   constructor(private defectsService: RestDefectsService) { 
 
+    this.equipeFiltro = 'TODOS';
+    this.filtro = '';
     this.getTexto();
 
     this.tableData1 = {
@@ -97,10 +101,49 @@ export class DataTableDefectsComponent implements OnInit {
         });
   }
 
+  filtroKeyUp(evento: KeyboardEvent){
+    this.filtro = (<HTMLTextAreaElement> evento.target).value
+    this.tableData1.dataRows = [];
 
+      for (let element of this.defeitos) {
+        if(this.checkFiltro(element, this.filtro) && (element.equipe == this.equipeFiltro || this.equipeFiltro == 'TODOS')){
+          this.tableData1.dataRows.push([element.id ,element.equipe , element.userName, element.priorizacao ,element.codigo, element.SLA, element.observacao, element.dataDaData, element.dataEntrega, element.statusDesc, element.sumario]);
+        }
+      }
+    }
+
+    checkFiltro(defeito: Defeito, fil: string): boolean{
+      if(defeito.id && defeito.id.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.equipe && defeito.equipe.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.userName && defeito.userName.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.priorizacao && defeito.priorizacao.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.codigo && defeito.codigo.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.SLA && defeito.SLA.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.observacao && defeito.observacao.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(this.formatData(defeito.dataDaData).toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(this.formatData(defeito.dataEntrega).toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.statusDesc && defeito.statusDesc.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }else if(defeito.sumario && defeito.sumario.toUpperCase().includes(fil.toUpperCase())){
+        return true;
+      }
+
+      return false;
+    }
 
 
   ngOnInit() {
+    this.equipeFiltro = 'TODOS';
+    this.filtro = '';
     this.getTexto();
     this.total = 0;
   }
@@ -153,6 +196,7 @@ export class DataTableDefectsComponent implements OnInit {
   }
 
   private returnDefeitosFiltro(equipe: String){
+    this.equipeFiltro = equipe;
     this.tableData1.dataRows = [];
     for (let element of this.defeitos) {
       if(element.equipe == equipe || equipe == 'TODOS'){
@@ -162,6 +206,7 @@ export class DataTableDefectsComponent implements OnInit {
   }
 
   public changeTable(entrada: String){
+    this.filtro = '';
      this.getDefectsFiltroClickButon(entrada);
   }
 
