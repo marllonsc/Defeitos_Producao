@@ -156,7 +156,9 @@ export class DataTableDefectsComponent implements OnInit {
     let equipe2: String ='';
     this.total = 0;
     for (let element of this.defeitos) {
-      this.tableData1.dataRows.push([element.id ,element.equipe , element.userName, element.priorizacao ,element.codigo, element.SLA, element.observacao, element.dataDaData, element.dataEntrega, element.statusDesc, element.sumario]);
+      if(this.checkEquipes(element)){
+        this.tableData1.dataRows.push([element.id ,element.equipe , element.userName, element.priorizacao ,element.codigo, element.SLA, element.observacao, element.dataDaData, element.dataEntrega, element.statusDesc, element.sumario]);
+      }
       if(element.equipe != 'VALIDOS' && element.equipe != 'Total'){
         this.total = this.total + 1;
       }
@@ -214,17 +216,17 @@ export class DataTableDefectsComponent implements OnInit {
     if(cell == 'ARQUITETURA S.'){
       return 'red';
     }else if(cell == 'CARE'){
-      return '#5EADEF'
+      return '#5EADEF';
     }else if(cell == 'CORE'){
-      return '#39C451'
+      return '#39C451';
     }else if(cell == 'INTERFACES(B2B)'){
-      return 'pink'
+      return 'pink';
     }else if(cell == 'INTERFACES(B2C)'){
-      return '#C05BF0'
+      return '#C05BF0';
     }else if(cell == 'PARAMETRIZAÇÃO'){
-      return '#FF9337'
+      return '#FF9337';
     }else if(cell == 'TRIAGEM'){
-      return '#FFD700'
+      return '#FFD700';
     }
   }
 
@@ -269,6 +271,29 @@ export class DataTableDefectsComponent implements OnInit {
     }else{
       return st;
     }
+  }
+
+  private checkEquipes(defeito: Defeito): boolean {
+    if(defeito.equipe == 'ARQUITETURA S.'){
+      return true;
+    }else if(defeito.equipe == 'CARE'){
+      return true;
+    }else if(defeito.equipe == 'CORE'){
+      return true;
+    }else if(defeito.equipe == 'INTERFACES(B2B)'){
+      return true;
+    }else if(defeito.equipe == 'INTERFACES(B2C)'){
+      return true;
+    }else if(defeito.equipe == 'PARAMETRIZAÇÃO'){
+      return true;
+    }else if(defeito.equipe == 'TRIAGEM'){
+      return true;
+    }else if(defeito.equipe == 'VALIDOS'){
+      return true;
+    }else if(defeito.equipe == 'Total'){
+      return true;
+    }
+    return false;
   }
 
 }
