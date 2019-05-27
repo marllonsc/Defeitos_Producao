@@ -1,3 +1,4 @@
+import { DataFormatada } from './../models/DataFormatada';
 import {TabsPanels } from '../models/TabsPanels';
 import { Texto } from 'app/models/Texto';
 import { Defeito } from './../models/Defeito';
@@ -127,9 +128,9 @@ export class DataTableDefectsComponent implements OnInit {
         return true;
       }else if(defeito.observacao && defeito.observacao.toUpperCase().includes(fil.toUpperCase())){
         return true;
-      }else if(this.formatData(defeito.dataDaData).toUpperCase().includes(fil.toUpperCase())){
+      }else if(defeito.dataDaData.dataFormatada.toUpperCase().includes(fil.toUpperCase())){
         return true;
-      }else if(this.formatData(defeito.dataEntrega).toUpperCase().includes(fil.toUpperCase())){
+      }else if(defeito.dataEntrega.dataFormatada.toUpperCase().includes(fil.toUpperCase())){
         return true;
       }else if(defeito.statusDesc && defeito.statusDesc.toUpperCase().includes(fil.toUpperCase())){
         return true;
@@ -238,15 +239,12 @@ export class DataTableDefectsComponent implements OnInit {
     }
   }
 
-  public checkDate(data: Date){
-    let now = new Date();
-    let newData = new Date(data);
-    
+  public checkDate(data: DataFormatada){
     if(!data){
       return '';
     }
 
-    if (now.toLocaleTimeString() <= newData.toLocaleTimeString()) {
+    if (!data.maiorQuedataAtual) {
        return 'red';
     }
   }

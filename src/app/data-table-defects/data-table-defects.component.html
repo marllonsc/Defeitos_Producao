@@ -39,8 +39,8 @@
                                         <td><div id="celula2">{{row[4]}}</div></td>
                                         <td><div id="celula2">{{row[5]}}</div></td>
                                         <td><div id="celula2">{{row[6]}}</div></td>
-                                        <td [style.backgroundColor]="checkDate(row[7])"><div id="celula2">{{formatData(row[7])}}</div></td>
-                                        <td [style.backgroundColor]="checkDate(row[8])"><div id="celula2">{{formatData(row[8])}}</div></td>
+                                        <td [style.backgroundColor]="checkDate(row[7])"><div id="celula2">{{row[7].dataFormatada}}</div></td>
+                                        <td [style.backgroundColor]="checkDate(row[8])"><div id="celula2">{{row[8].dataFormatada}}</div></td>
                                         <td [style.backgroundColor]="checkPriorizacao(row[9])"><div id="celula2">{{row[9]}}</div></td>
                                         <td title="{{row[10]}}"><div id="celula2">{{abreviar(row[10],100)}}</div></td>
                                     </tr>

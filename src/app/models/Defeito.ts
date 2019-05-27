@@ -1,3 +1,4 @@
+import { DataFormatada } from './DataFormatada';
 export class Defeito {
 
     id: string;
@@ -7,8 +8,8 @@ export class Defeito {
 	codigo: string;
 	SLA: string;
 	observacao: string;
-	dataDaData: Date;
-	dataEntrega: Date;
+	dataDaData: DataFormatada;
+	dataEntrega: DataFormatada;
 	statusDesc: string;
     sumario: string;
     
